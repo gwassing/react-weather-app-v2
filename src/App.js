@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
+import Search from "./Search";
+import Footer from "./Footer";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello world</h1>
-      <h2>Hello again</h2>
+      <div className="container">
+        <Search />
+        <Footer />
+      </div>
     </div>
   );
 }
