@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Search(props) {
   let [ready, setReady] = useState(false);
-  let [weather, setWeather] = useState({});
+  let [weatherData, setWeatherData] = useState({});
   let [city, setCity] = useState(props.defaultCity);
 
   function showWeather(response) {
     setReady(true);
     console.log(response.data);
-    setWeather({
+    setWeatherData({
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
@@ -63,8 +64,10 @@ export default function Search(props) {
             </div>
           </div>
         </form>
-        <h1>{weather.city}</h1>
-        <h2>{weather.date}</h2>
+        <h1>{weatherData.city}</h1>
+        <h2>
+          <FormattedDate date={weatherData.date} />
+        </h2>
         <div className="row currentWeather">
           <div className="col">
             <img
@@ -72,16 +75,16 @@ export default function Search(props) {
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
               alt=""
             />
-            <span className="temp">{Math.round(weather.temperature)}</span>
+            <span className="temp">{Math.round(weatherData.temperature)}</span>
             <span className="units">
               <a href="/">°C</a> |<a href="/">°F</a>
             </span>
           </div>
           <div className="col">
             <ul>
-              <li>{weather.description}</li>
-              <li>Humidity: {weather.humidity} %</li>
-              <li>Wind: {Math.round(weather.wind)} m/s</li>
+              <li>{weatherData.description}</li>
+              <li>Humidity: {weatherData.humidity} %</li>
+              <li>Wind: {Math.round(weatherData.wind)} m/s</li>
             </ul>
           </div>
         </div>
