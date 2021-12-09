@@ -16,12 +16,12 @@ export default function Search(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].main,
       city: response.data.name,
-      date: "Monday 6 dec",
+      date: new Date(response.data.dt * 1000),
     });
   }
 
   function searchWeather() {
-    let apiKey = "d4e31f25da5e889fefeac7617a05a07c";
+    let apiKey = "6f279121b4b50aa10b56f97ac402d643";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(showWeather);
