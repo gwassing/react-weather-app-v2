@@ -13,10 +13,12 @@ export default function Search(props) {
     console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
+      feelsLike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].main,
       city: response.data.name,
+      country: response.data.sys.country,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: new Date(response.data.dt * 1000),
     });
@@ -65,7 +67,9 @@ export default function Search(props) {
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
+        <h1>
+          {weatherData.city}, {weatherData.country}
+        </h1>
         <h2>
           <FormattedDate date={weatherData.date} />
         </h2>
@@ -80,6 +84,7 @@ export default function Search(props) {
           <div className="col">
             <ul>
               <li>{weatherData.description}</li>
+              <li>Feels like {Math.round(weatherData.feelsLike)} °C</li>
               <li>Humidity: {weatherData.humidity} %</li>
               <li>Wind: {Math.round(weatherData.wind)} m/s</li>
             </ul>
