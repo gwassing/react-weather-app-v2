@@ -17,15 +17,9 @@ export default function Search(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].main,
       city: response.data.name,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: new Date(response.data.dt * 1000),
     });
-  }
-
-  function searchWeather() {
-    let apiKey = "6f279121b4b50aa10b56f97ac402d643";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(showWeather);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,6 +28,13 @@ export default function Search(props) {
 
   function handleChange(event) {
     setCity(event.target.value);
+  }
+
+  function searchWeather() {
+    let apiKey = "6f279121b4b50aa10b56f97ac402d643";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(showWeather);
   }
 
   if (ready) {
@@ -70,11 +71,7 @@ export default function Search(props) {
         </h2>
         <div className="row currentWeather">
           <div className="col">
-            <img
-              className="icon"
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt=""
-            />
+            <img className="icon" src={weatherData.icon} alt="" />
             <span className="temp">{Math.round(weatherData.temperature)}</span>
             <span className="units">
               <a href="/">°C</a> |<a href="/">°F</a>
