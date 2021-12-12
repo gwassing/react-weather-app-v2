@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 
 export default function Search(props) {
   let [ready, setReady] = useState(false);
@@ -19,7 +20,7 @@ export default function Search(props) {
       description: response.data.weather[0].main,
       city: response.data.name,
       country: response.data.sys.country,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
     });
   }
@@ -70,12 +71,14 @@ export default function Search(props) {
         <h1>
           {weatherData.city}, {weatherData.country}
         </h1>
+
         <h2>
           <FormattedDate date={weatherData.date} />
         </h2>
+
         <div className="row currentWeather">
           <div className="col">
-            <img className="icon" src={weatherData.icon} alt="" />
+            <WeatherIcon icon={weatherData.icon} />
             <span className="temp">{Math.round(weatherData.temperature)}</span>
             <span className="units">
               <a href="/">°C</a> |<a href="/">°F</a>
