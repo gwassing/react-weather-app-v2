@@ -29,31 +29,9 @@ export default function FormattedDate(props) {
   let date = props.date.getDate();
   let month = months[props.date.getMonth()];
 
-  if (date === 1 || date === 21 || date === 31) {
-    return (
-      <div>
-        {day}, {date}st of {month}
-      </div>
-    );
-  }
-  if (date === 2 || date === 22) {
-    return (
-      <div>
-        {day}, {date}nd of {month}
-      </div>
-    );
-  }
-  if (date === 3 || date === 23) {
-    return (
-      <div>
-        {day}, {date}rd of {month}
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        {day}, {date}th of {month}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {day}, {date} {month}
+    </div>
+  );
 }
