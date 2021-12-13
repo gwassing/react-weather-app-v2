@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Search.css";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import CurrentTemperature from "./CurrentTemperature";
 
 export default function Search(props) {
   let [ready, setReady] = useState(false);
@@ -79,10 +80,8 @@ export default function Search(props) {
         <div className="row currentWeather">
           <div className="col">
             <WeatherIcon icon={weatherData.icon} />
-            <span className="temp">{Math.round(weatherData.temperature)}</span>
-            <span className="units">
-              <a href="/">°C</a> |<a href="/">°F</a>
-            </span>
+
+            <CurrentTemperature celsius={weatherData.temperature} />
           </div>
           <div className="col">
             <ul>
