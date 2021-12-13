@@ -9,10 +9,10 @@
   font-weight: 500;
 }
 .Search h2 {
-  font-size: 24px;
+  font-size: 21px;
 }
 .Search .currentWeather {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .Search .currentWeather .icon {
   margin-bottom: 20px;
@@ -21,7 +21,7 @@
   font-size: 50px;
   font-weight: 500;
   position: relative;
-  top: 7px;
+  top: 10px;
 }
 .currentWeather a {
   text-decoration: none;
@@ -29,8 +29,8 @@
 
 .currentWeather .units {
   position: relative;
-  bottom: 17px;
-  left: 5px;
+  bottom: 10px;
+  left: 10px;
   font-size: 18px;
 }
 
