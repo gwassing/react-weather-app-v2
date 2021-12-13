@@ -14,7 +14,7 @@ export default function Search(props) {
     console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
-      feelsLike: response.data.main.feels_like,
+      feelslike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].main,
@@ -81,12 +81,15 @@ export default function Search(props) {
           <div className="col">
             <WeatherIcon icon={weatherData.icon} />
 
-            <CurrentTemperature celsius={weatherData.temperature} />
+            <CurrentTemperature
+              celsius={weatherData.temperature}
+              feelslike={weatherData.feelslike}
+            />
           </div>
           <div className="col">
             <ul>
               <li>{weatherData.description}</li>
-              <li>Feels like {Math.round(weatherData.feelsLike)} °C</li>
+
               <li>Humidity: {weatherData.humidity} %</li>
               <li>Wind: {Math.round(weatherData.wind)} m/s</li>
             </ul>

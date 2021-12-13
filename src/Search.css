@@ -40,3 +40,8 @@
   margin-top: 15px;
   font-size: 20px;
 }
+.Search .currentWeather .feelslike {
+  margin-left: 80px;
+  font-style: italic;
+  font-size: 16px;
+}
