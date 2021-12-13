@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
-import FormattedDate from "./FormattedDate";
-import WeatherIcon from "./WeatherIcon";
-import CurrentTemperature from "./CurrentTemperature";
+import WeatherInfo from "./WeatherInfo";
 
 export default function Search(props) {
   let [ready, setReady] = useState(false);
@@ -69,32 +67,7 @@ export default function Search(props) {
             </div>
           </div>
         </form>
-        <h1>
-          {weatherData.city}, {weatherData.country}
-        </h1>
-
-        <h2>
-          <FormattedDate date={weatherData.date} />
-        </h2>
-
-        <div className="row currentWeather">
-          <div className="col">
-            <WeatherIcon icon={weatherData.icon} />
-
-            <CurrentTemperature
-              celsius={weatherData.temperature}
-              feelslike={weatherData.feelslike}
-            />
-          </div>
-          <div className="col">
-            <ul>
-              <li>{weatherData.description}</li>
-
-              <li>Humidity: {weatherData.humidity} %</li>
-              <li>Wind: {Math.round(weatherData.wind)} m/s</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo info={weatherData} />
       </div>
     );
   } else {

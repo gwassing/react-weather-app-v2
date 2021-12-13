@@ -10,8 +10,6 @@ import { WiSnow } from "weather-icons-react";
 import { WiFog } from "weather-icons-react";
 
 export default function WeatherIcon(props) {
-  console.log(props.icon);
-
   if (props.icon === "01d") {
     return <WiDaySunny size={80} />;
   } else if (props.icon === "01n") {

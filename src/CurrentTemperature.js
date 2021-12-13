@@ -22,7 +22,7 @@ export default function CurrentTemperature(props) {
           </a>
         </span>
         <div className="feelslike">
-          Feels like {Math.round(props.feelslike)} °C
+          Feels like {Math.round(props.feelslike)}°
         </div>
       </span>
     );
@@ -37,7 +37,7 @@ export default function CurrentTemperature(props) {
           | °F
         </span>
         <div className="feelslike">
-          Feels like {Math.round((props.feelslike * 9) / 5 + 32)} °F
+          Feels like {Math.round((props.feelslike * 9) / 5 + 32)}°
         </div>
       </span>
     );

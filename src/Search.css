@@ -20,6 +20,7 @@
 .Search .currentWeather .temp {
   font-size: 50px;
   font-weight: 500;
+  margin-left: 5px;
   position: relative;
   top: 10px;
 }
@@ -41,7 +42,7 @@
   font-size: 20px;
 }
 .Search .currentWeather .feelslike {
-  margin-left: 80px;
+  margin-left: 85px;
   font-style: italic;
   font-size: 16px;
 }
