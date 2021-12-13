@@ -10,7 +10,6 @@ export default function Search(props) {
   let [city, setCity] = useState(props.defaultCity);
 
   function showWeather(response) {
-    setReady(true);
     console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
@@ -23,6 +22,7 @@ export default function Search(props) {
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
     });
+    setReady(true);
   }
   function handleSubmit(event) {
     event.preventDefault();
