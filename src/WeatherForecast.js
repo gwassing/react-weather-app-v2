@@ -4,11 +4,11 @@ import WeatherIconForecast from "./WeatherIconForecast";
 
 export default function WeatherForecast(props) {
   const [ready, setReady] = useState(false);
-  const [forecastDay, setForecastDay] = useState({});
+  const [forecast, setForecast] = useState({});
 
   function showForecast(response) {
     console.log(response.data);
-    setForecastDay({
+    setForecast({
       day: response.data.daily[0].dt,
       tempMax: response.data.daily[0].temp.max,
       tempMin: response.data.daily[0].temp.min,
@@ -18,8 +18,8 @@ export default function WeatherForecast(props) {
   }
   function searchForecast() {
     let apiKey = "764f76ba97a9561444a6ac3f4d76aa84";
-    let lat = props.lat;
-    let lon = props.lon;
+    let lat = props.coordinates.lat;
+    let lon = props.coordinates.lon;
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(showForecast);
@@ -29,20 +29,20 @@ export default function WeatherForecast(props) {
     function () {
       setReady(false);
     },
-    [props.lat]
+    [props.coordinates]
   );
 
   if (ready) {
     return (
       <div className="row WeatherForecast">
         <div className="col">
-          <div>{forecastDay.day}</div>
+          <div>{forecast.day}</div>
           <div>
-            <WeatherIconForecast icon={forecastDay.icon} />
+            <WeatherIconForecast icon={forecast.icon} />
           </div>
           <div>
-            <span className="max">{Math.round(forecastDay.tempMax)}°</span>
-            <span className="min">{Math.round(forecastDay.tempMin)}°</span>
+            <span className="max">{Math.round(forecast.tempMax)}°</span>
+            <span className="min">{Math.round(forecast.tempMin)}°</span>
           </div>
         </div>
       </div>

@@ -22,8 +22,7 @@ export default function Search(props) {
       country: response.data.sys.country,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
-      lat: response.data.coord.lat,
-      lon: response.data.coord.lon,
+      coordinates: response.data.coord,
     });
     setReady(true);
   }
@@ -72,7 +71,7 @@ export default function Search(props) {
           </div>
         </form>
         <WeatherInfo info={weatherData} />
-        <WeatherForecast lat={weatherData.lat} lon={weatherData.lon} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
         <Timestamp time={weatherData.date} />
       </div>
     );
