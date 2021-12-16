@@ -1,0 +1,7 @@
+.WeatherForecast {
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.WeatherForecast .min {
+  color: grey;
+}
