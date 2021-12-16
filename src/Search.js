@@ -22,6 +22,8 @@ export default function Search(props) {
       country: response.data.sys.country,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
     });
     setReady(true);
   }
@@ -35,7 +37,7 @@ export default function Search(props) {
   }
 
   function searchWeather() {
-    let apiKey = "6f279121b4b50aa10b56f97ac402d643";
+    let apiKey = "764f76ba97a9561444a6ac3f4d76aa84";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(showWeather);
@@ -70,7 +72,7 @@ export default function Search(props) {
           </div>
         </form>
         <WeatherInfo info={weatherData} />
-        <WeatherForecast />
+        <WeatherForecast lat={weatherData.lat} lon={weatherData.lon} />
         <Timestamp time={weatherData.date} />
       </div>
     );
