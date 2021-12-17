@@ -8,12 +8,12 @@
 }
 .Search h1 {
   margin: 50px 10px 0px;
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 500;
 }
 .Search h2 {
   margin: 10px 10px;
-  font-size: 21px;
+  font-size: 20px;
 }
 .Search .currentWeather {
   margin-top: 40px;
@@ -22,7 +22,7 @@
   margin-bottom: 20px;
 }
 .Search .currentWeather .temp {
-  font-size: 50px;
+  font-size: 46px;
   font-weight: 500;
   margin-left: 5px;
   position: relative;
@@ -36,21 +36,21 @@
   position: relative;
   bottom: 10px;
   left: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .Search .currentWeather ul {
   list-style: none;
   margin-left: 40px;
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 18px;
 }
 .Search .currentWeather .feelslike {
   margin-left: 85px;
   font-style: italic;
-  font-size: 16px;
+  font-size: 14px;
 }
 .Search .timestamp {
   text-align: end;
-  font-size: 14px;
+  font-size: 12px;
 }
