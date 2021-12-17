@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import WeatherIconForecast from "./WeatherIconForecast";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
   const [ready, setReady] = useState(false);
@@ -8,12 +8,7 @@ export default function WeatherForecast(props) {
 
   function showForecast(response) {
     console.log(response.data);
-    setForecast({
-      date: new Date(response.data.daily[0].dt * 1000),
-      tempMax: response.data.daily[0].temp.max,
-      tempMin: response.data.daily[0].temp.min,
-      icon: response.data.daily[0].weather[0].icon,
-    });
+    setForecast(response.data.daily);
     setReady(true);
   }
   function searchForecast() {
@@ -23,12 +18,6 @@ export default function WeatherForecast(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(showForecast);
-  }
-
-  function dayName() {
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let day = days[forecast.date.getDay()];
-    return <div>{day}</div>;
   }
 
   useEffect(
@@ -41,16 +30,17 @@ export default function WeatherForecast(props) {
   if (ready) {
     return (
       <div className="row WeatherForecast">
-        <div className="col">
-          <div>{dayName()}</div>
-          <div>
-            <WeatherIconForecast icon={forecast.icon} />
-          </div>
-          <div>
-            <span className="max">{Math.round(forecast.tempMax)}°</span>
-            <span className="min">{Math.round(forecast.tempMin)}°</span>
-          </div>
-        </div>
+        {forecast.map(function (forecast, index) {
+          if (index < 5) {
+            return (
+              <div className="col" key={index}>
+                <WeatherForecastDay forecastData={forecast} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     );
   } else {
