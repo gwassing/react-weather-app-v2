@@ -5,7 +5,14 @@ export default function Footer() {
   return (
     <div className="Footer">
       This app was coded by Gabriela and is
-      <a href="google.com"> open-source</a>
+      <a
+        href="https://github.com/gwassing/react-weather-app-v2"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {" "}
+        open-source
+      </a>
     </div>
   );
 }
