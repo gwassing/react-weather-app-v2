@@ -1,8 +1,14 @@
 .WeatherForecast {
   margin: 0 auto;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 65px;
+  margin-bottom: 50px;
   text-align: center;
+}
+.WeatherForecastDay .icon {
+  margin-top: 5px;
+}
+.WeatherForecastDay .temperatures {
+  margin-top: 5px;
 }
 .WeatherForecast .min {
   color: grey;

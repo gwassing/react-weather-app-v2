@@ -1,18 +1,22 @@
 .Search {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 30px 30px 5px;
+  padding: 40px 40px 5px;
+}
+.Search form {
+  margin: 0px 0px;
 }
 .Search h1 {
-  margin-top: 50px;
+  margin: 50px 10px 0px;
   font-size: 42px;
   font-weight: 500;
 }
 .Search h2 {
+  margin: 10px 10px;
   font-size: 21px;
 }
 .Search .currentWeather {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .Search .currentWeather .icon {
   margin-bottom: 20px;
