@@ -11,7 +11,6 @@ export default function Search(props) {
   let [city, setCity] = useState(props.defaultCity);
 
   function showWeather(response) {
-    console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
       feelslike: response.data.main.feels_like,
