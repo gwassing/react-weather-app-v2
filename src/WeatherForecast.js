@@ -9,7 +9,7 @@ export default function WeatherForecast(props) {
   function showForecast(response) {
     console.log(response.data);
     setForecast({
-      day: response.data.daily[0].dt,
+      date: new Date(response.data.daily[0].dt * 1000),
       tempMax: response.data.daily[0].temp.max,
       tempMin: response.data.daily[0].temp.min,
       icon: response.data.daily[0].weather[0].icon,
@@ -25,6 +25,12 @@ export default function WeatherForecast(props) {
     axios.get(apiUrl).then(showForecast);
   }
 
+  function dayName() {
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let day = days[forecast.date.getDay()];
+    return <div>{day}</div>;
+  }
+
   useEffect(
     function () {
       setReady(false);
@@ -36,7 +42,7 @@ export default function WeatherForecast(props) {
     return (
       <div className="row WeatherForecast">
         <div className="col">
-          <div>{forecast.day}</div>
+          <div>{dayName()}</div>
           <div>
             <WeatherIconForecast icon={forecast.icon} />
           </div>
